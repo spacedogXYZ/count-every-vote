@@ -1,0 +1,12 @@
+{
+  "development": {
+    "apiUrl": "https://vote.ghost.io",
+    "contentApiKey": "15909fb85f4f39d9c7cb1b93d0",
+    "version": "v3"
+  },
+  "production": {
+    "apiUrl": "https://vote.ghost.io",
+    "contentApiKey": "15909fb85f4f39d9c7cb1b93d0",
+    "version": "v3"
+  }
+}
