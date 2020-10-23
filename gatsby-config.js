@@ -42,6 +42,7 @@ let gatsbyPlugins = [
     options: {
       ghostConfig: ghostConfig,
       siteConfig: siteConfig,
+      basePath: "articles"
     },
   },
 ];

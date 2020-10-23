@@ -20,6 +20,10 @@ module.exports ={
         "url": "https://www.voteamerica.com/"
       },
       {
+        "label": "Articles",
+        "url": "/articles"
+      },
+      {
         "label": "Contact",
         "url": "/contact"
       },
@@ -95,7 +99,7 @@ module.exports ={
   "siteDescription": "Monitoring and fact-checking voting news.",
   "language": "en-US",
   "logoUrl": "count_every_vote_black_center.png",
-  "iconUrl": "https://draftbox-prod.s3.amazonaws.com/users/5f6e1cfbbe93ff001f420506/images/5f6e1dc8be93ff001f420508/icon.png",
+  "iconUrl": "",
   "coverUrl": "cover.png",
   "alternateLogoUrl": "",
   "themeConfig": {
