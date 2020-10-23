@@ -1,7 +1,10 @@
+let DEVELOPMENT = process.env.NODE_ENV === `development`
+let SITE_URL = DEVELOPMENT ? "http://localhost:8000" : "https://count-every-vote.netlify.app"
+
 module.exports ={
-  "siteUrl": "https://count-every-vote-0508.netlify.app",
+  "siteUrl": SITE_URL,
   "postsPerPage": 10,
-  "siteTitleMeta": "Vote✔️Counts",
+  "siteTitleMeta": "Count Every Vote✔️",
   "siteDescriptionMeta": "Monitoring and fact-checking voting news.",
   "shareImageWidth": 1000,
   "shareImageHeight": 523,
@@ -18,7 +21,7 @@ module.exports ={
       },
       {
         "label": "Contact",
-        "url": "https://count-every-vote-0508.netlify.app/contact"
+        "url": "/contact"
       },
       {
         "label": "Subscribe",
@@ -27,19 +30,19 @@ module.exports ={
     ]
   },
   "footer": {
-    "copyright": "Vote✔️",
+    "copyright": "Count Every Vote✔️",
     "navigation": [
       {
         "label": "Home",
-        "url": "https://count-every-vote-0508.netlify.app/"
+        "url": `${SITE_URL}`
       },
       {
         "label": "Sitemap",
-        "url": "https://count-every-vote-0508.netlify.app/sitemap.xml"
+        "url": `${SITE_URL}/sitemap.xml`
       },
       {
         "label": "RSS",
-        "url": "https://count-every-vote-0508.netlify.app/rss.xml"
+        "url": `${SITE_URL}/rss.xml`
       },
       {
         "label": "Subscribe",
@@ -48,13 +51,13 @@ module.exports ={
     ]
   },
   "subscribeWidget": {
-    "visible": true,
+    "visible": false,
     "title": "Subscribe to Vote✔️",
     "helpText": "Get daily updates about voting news and fact-checked content from our team.",
     "successMessage": "Congratulations! You have been subscribed. Check your inbox."
   },
   "socialLinks": {
-    "twitter": "https://twitter.com/@votechecked",
+    "twitter": "https://twitter.com/@everyvote2020",
     "facebook": "",
     "instagram": "",
     "linkedin": "",
@@ -71,27 +74,27 @@ module.exports ={
     "successMessage": "We'll get in touch with you soon."
   },
   "metadata": {
-    "title": "Vote✔️Counts",
+    "title": "Count Every Vote✔️",
     "description": "Monitoring and fact-checking voting news."
   },
   "twitterCard": {
-    "title": "Vote✔️",
+    "title": "Count Every Vote✔️",
     "description": "Monitoring and fact-checking voting news.",
     "imageUrl": "twitterImage.png",
     "username": "@votechecked"
   },
   "facebookCard": {
-    "title": "Vote✔️",
+    "title": "Count Every Vote✔️",
     "description": "Monitoring and fact-checking voting news.",
     "imageUrl": "facebookImage.png",
     "appId": "",
     "width": 1000,
     "height": 523
   },
-  "siteTitle": "Vote✔️Counts",
+  "siteTitle": "Count Every Vote✔️",
   "siteDescription": "Monitoring and fact-checking voting news.",
   "language": "en-US",
-  "logoUrl": "logo.jpeg",
+  "logoUrl": "count_every_vote_black_center.png",
   "iconUrl": "https://draftbox-prod.s3.amazonaws.com/users/5f6e1cfbbe93ff001f420506/images/5f6e1dc8be93ff001f420508/icon.png",
   "coverUrl": "cover.png",
   "alternateLogoUrl": "",

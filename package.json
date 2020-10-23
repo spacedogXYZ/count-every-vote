@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-ghost-novela-starter",
-  "description": "A Gatsby starter for creating blogs from headless Ghost CMS.",
+  "name": "count-every-vote",
+  "description": "Count Every Vote is a nonpartisan nonprofit movement comprised of voters, activists and organizations working to protect the 2020 vote.",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
