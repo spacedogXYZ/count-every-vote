@@ -99,6 +99,8 @@ module.exports ={
   "coverUrl": "cover.png",
   "alternateLogoUrl": "",
   "themeConfig": {
+    "useLocalStorage": false,
+    "useColorSchemeMediaQuery": false,
     "variables": [
       {
         "varName": "--accent-color",
