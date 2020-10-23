@@ -6,10 +6,8 @@ import mediaqueries from "@styles/media";
 import { Icon } from "@types";
 import { graphql, useStaticQuery } from "gatsby";
 import url from "url";
-import { useColorMode } from "theme-ui";
 
 const Logo: Icon = ({ fill = "white" }) => {
-  const [colorMode] = useColorMode();
 
   const {
     site: {
@@ -33,11 +31,7 @@ const Logo: Icon = ({ fill = "white" }) => {
       {logoUrl || alternateLogoUrl ? (
         <img
           className="logo"
-          src={
-            colorMode === "dark"
-              ? url.resolve(siteUrl, alternateLogoUrl)
-              : url.resolve(siteUrl, logoUrl)
-          }
+          src={ url.resolve(siteUrl, logoUrl) }
           alt={siteTitle}
         />
       ) : (

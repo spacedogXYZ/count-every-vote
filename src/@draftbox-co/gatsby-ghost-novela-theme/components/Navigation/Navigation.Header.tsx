@@ -117,7 +117,10 @@ const NavigationHeader: React.FC<{}> = () => {
     }
   });
 
-  const [colorMode] = useColorMode();
+  const [colorMode, setColorMode] = useColorMode();
+
+  // override os settings, we don't want dark mode
+  setColorMode(`light`);
   const fill = colorMode === "dark" ? "#fff" : "#111216";
 
   return (
