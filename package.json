@@ -35,7 +35,10 @@
     "gatsby-plugin-google-tagmanager": "^2.3.5",
     "gatsby-plugin-mixpanel": "^3.1.6",
     "gatsby-plugin-segment-js": "^3.1.0",
+    "gatsby-source-filesystem": "^2.3.36",
+    "gatsby-transformer-csv": "^2.3.14",
     "react": "^16.13.0",
+    "react-charts": "^2.0.0-beta.7",
     "react-dom": "^16.13.0",
     "react-facebook": "^8.1.4"
   }

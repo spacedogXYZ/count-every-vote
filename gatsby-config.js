@@ -35,6 +35,9 @@ try {
   }
 }
 
+const { typeNameFromDir } = require("gatsby-transformer-csv")
+
+
 // setting up plugins
 let gatsbyPlugins = [
   {
@@ -44,6 +47,19 @@ let gatsbyPlugins = [
       siteConfig: siteConfig,
       basePath: "articles"
     },
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `data`,
+      path: `${__dirname}/data/`,
+    },
+  },
+  {
+    resolve: `gatsby-transformer-csv`,
+    options: {
+      typeName: typeNameFromDir,
+    }
   },
 ];
 
