@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import mediaqueries from "@styles/media";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const IndexBox: React.FC = ({ title, icon, iconColor, shadow, column, children }) => {
@@ -26,14 +24,20 @@ export const BoxContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  
+  @media (max-width: 420px) {
+    flex-direction: column;
+  }
   flex-direction: ${props =>
-    props.column ? 'column' : 'row'};
+      props.column ? 'column' : 'row'};
   margin: 2rem 0;
 `;
 
 const BoxWrapper = styled.div`
   display: flex;
-  max-width: 75%;
+  @media (min-width: 420px) {
+    max-width: 75%;
+  }
   margin: 0 2rem 2rem 0; 
   padding: 2rem;
   border: ${props =>
@@ -42,6 +46,9 @@ const BoxWrapper = styled.div`
     props.shadow ? '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' : 'none'};
   flex-direction: ${props =>
     props.column ? 'column' : 'row'};
+  @media (max-width: 420px) {
+    flex-direction: row;
+  }
 `;
 
 const IconWrapper = styled.div`

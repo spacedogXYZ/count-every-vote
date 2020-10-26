@@ -25,6 +25,14 @@ import { red, yellow, orange, purple, blue } from "../colors";
 
 import MailBox from "../..//static/mail-box.svg";
 
+
+const BigImage = styled.div`
+  display: flex;
+  @media (max-width: 420px) {
+    display: none;
+  }
+`
+
 const Index = () => {
   return (
     <Layout>
@@ -89,9 +97,9 @@ const Index = () => {
             </IndexBox>
           </BoxContainer>
 
-          <div style={{display: "flex"}}>
+          <BigImage>
             <img src={MailBox} style={{width: "100%"}} />
-          </div>
+          </BigImage>
         </div>
       </IndexSection>
 
@@ -116,7 +124,8 @@ const Index = () => {
           >
             <p>Share the Count Every Vote message on social media and in your local press.</p>
           </IndexBox>
-
+        </BoxContainer>
+        <BoxContainer>
           <IndexBox
             icon={faInfoCircle}
             iconColor={yellow}
@@ -134,7 +143,7 @@ const Index = () => {
             column
             shadow
           >
-            <p></p>
+            <p>Get breaking updates from our team of researchers monitoring the 2020 Election.</p>
           </IndexBox>
         </BoxContainer>
 
