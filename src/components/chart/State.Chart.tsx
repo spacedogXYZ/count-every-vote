@@ -62,7 +62,16 @@ const StateChart = ({state, title}) => {
         }
         let s = chartData.datasets.find((s) => (s.label === label))
         if (d.y && d.y !== "0") {
-          s.data.push(d)
+          // check for an existing data point for same day
+          let dupe = s.data.find((x) => (x.x === d.x))
+          if (dupe) {
+            if (d.y >= dupe.y) {
+              s.data.pop() // remove the smaller
+              s.data.push(d)
+            }
+          } else {
+            s.data.push(d)
+          }
         }
       }
     })
