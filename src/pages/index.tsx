@@ -37,38 +37,38 @@ const Index = () => {
   return (
     <Layout>
       <IndexHero />
-      <IndexSection title={"Free and Fair Election"}>
-        <p>We need to know that every eligible voter will have the opportunity to vote without restriction and that every vote will be counted. This election must include three crucial elements:</p>
+      <IndexSection title={"Our Plan"}>
+        <p>We are nonpartisan movement built on the simple idea that elections must reflect the will of the people and that can only happen if we <strong>Count Every Vote</strong>. We need to know that every eligible voter will have the opportunity to vote without restriction and that every vote will be counted.</p>
 
         <BoxContainer>
           <IndexBox
             icon={faPersonBooth}
             iconColor={blue}
-            title="Reflect"
+            title="Voters"
           >
-            <p>The will of voters must be captured through an open and fair voting process.</p>
+            <p>Connecting voters and activists with resources to mobilize and ensure state officials <strong>Count Every Vote.</p>
           </IndexBox>
 
           <IndexBox
             icon={faCheck}
             iconColor={yellow}
-            title="Reliable"
+            title="Journalists"
           >
-            <p>Voters must be able to trust that their votes will be counted completely and accurately.</p>
+            <p>Providing resources and guidance to support accurate and balanced coverage as states complete their counts.</p>
           </IndexBox>
 
           <IndexBox
             icon={faFlagUsa}
             iconColor={red}
-            title="Respect"
+            title="Data"
           >
-            <p>The will of the people is respected and protected by candidates and the government.</p>
+            <p>Visualizing the vote count with data and context to make sense of the counting process.</p>
           </IndexBox>
         </BoxContainer>
       </IndexSection>
 
       <IndexSection title={"An Election Like No Other"}>
-        <p>COVID-19 and a historically divided electorate make this election incredibly unique and potentially confused.</p>
+        <p>COVID-19 and a historically divided electorate increase the likliehood that counting votes will take longer than past elections and could be contested. We need to be prepared to share accurate information and take action until every vote is counted.</p>
       
         <div style={{display: "flex"}}>
           <BoxContainer column>
@@ -143,7 +143,7 @@ const Index = () => {
             column
             shadow
           >
-            <p>Get breaking updates from our team of researchers monitoring the 2020 Election.</p>
+            <p><a href="https://www.getrevue.co/profile/vote"><strong>Get breaking updates</strong></a> from our team of researchers monitoring the 2020 Election.</p>
           </IndexBox>
         </BoxContainer>
 

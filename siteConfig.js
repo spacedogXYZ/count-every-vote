@@ -4,11 +4,11 @@ let SITE_URL = DEVELOPMENT ? "http://localhost:8000" : "https://count-every-vote
 module.exports ={
   "siteUrl": SITE_URL,
   "postsPerPage": 10,
-  "siteTitleMeta": "Count Every Vote✔️",
-  "siteDescriptionMeta": "Monitoring and fact-checking voting news.",
+  "siteTitleMeta": "Count Every Vote",
+  "siteDescriptionMeta": "The movement to protect the 2020 Election.",
   "shareImageWidth": 1000,
   "shareImageHeight": 523,
-  "shortTitle": "Vote✔️Counts",
+  "shortTitle": "Count Every Vote",
   "siteIcon": "favicon.png",
   "backgroundColor": "#e9e9e9",
   "themeColor": "#15171A",
@@ -34,7 +34,7 @@ module.exports ={
     ]
   },
   "footer": {
-    "copyright": "Count Every Vote✔️",
+    "copyright": "Count Every Vote",
     "navigation": [
       {
         "label": "Home",
@@ -74,29 +74,29 @@ module.exports ={
     "externalLink": ""
   },
   "contactWidget": {
-    "title": "Contact Vote✔️",
+    "title": "Contact Vote",
     "successMessage": "We'll get in touch with you soon."
   },
   "metadata": {
-    "title": "Count Every Vote✔️",
+    "title": "Count Every Vote",
     "description": "Monitoring and fact-checking voting news."
   },
   "twitterCard": {
-    "title": "Count Every Vote✔️",
+    "title": "Count Every Vote",
     "description": "Monitoring and fact-checking voting news.",
     "imageUrl": "twitterImage.png",
     "username": "@votechecked"
   },
   "facebookCard": {
-    "title": "Count Every Vote✔️",
-    "description": "Monitoring and fact-checking voting news.",
+    "title": "Count Every Vote",
+    "description": "Protecting the 2020 Election with accurate data for journalists and activists.",
     "imageUrl": "facebookImage.png",
     "appId": "",
     "width": 1000,
     "height": 523
   },
-  "siteTitle": "Count Every Vote✔️",
-  "siteDescription": "Monitoring and fact-checking voting news.",
+  "siteTitle": "Count Every Vote",
+  "siteDescription": "The Movement to Protect the 2020 Election.",
   "language": "en-US",
   "logoUrl": "count_every_vote_black_center.png",
   "iconUrl": "",
