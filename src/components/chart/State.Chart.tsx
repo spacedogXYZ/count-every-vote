@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "@emotion/styled";
-
 import { graphql, useStaticQuery } from "gatsby";
 
-import { Chart } from "react-charts";
+import { Line } from 'react-chartjs-2';
+import { white, red, yellow, orange, purple, blue } from "../../colors";
 
 const LABELS = {
-  total_early_2020: 'Total Early Votes',
-  in_person_2020: 'In Person Votes',
-  mail_accept_2020: 'Mail Ballots Accepted',
-  mail_reject_2020: 'Mail Ballots Rejected',
-  mail_sent_req_2020: 'Mail Ballots Requested'
+  total_early_2020: {s: 'Total Early Votes', c: red},
+  in_person_2020: {s: 'In Person Votes', c: yellow},
+  mail_accept_2020: {s: 'Mail Ballots Accepted', c: purple},
+  mail_reject_2020: {s: 'Mail Ballots Rejected', c: orange},
+  mail_sent_req_2020: {s: 'Mail Ballots Requested', c: blue},
 };
 
 const ChartWrapper = styled.div`
@@ -38,11 +38,13 @@ const StateChart = ({state, title}) => {
 
   // this is organized as a row for each state date
   // invert so each reporting type is a series
-  var seriesData = Object.keys(LABELS).map((l) => (
+  var chartData = {};
+  chartData.datasets = Object.keys(LABELS).map((l) => (
     {
-      label: LABELS[l],
+      label: LABELS[l].s,
+      borderColor: LABELS[l].c,
+      fill: false,
       data: [],
-      curve: 'linear'
     }
   ));
 
@@ -52,43 +54,63 @@ const StateChart = ({state, title}) => {
       return;
     }
     Object.keys(row).forEach((key) => {
-      let label = LABELS[key];
-      if (label) {
+      if (LABELS[key]) {
+        let label = LABELS[key].s;
         let d = {
-          primary: new Date(row['report_date']),
-          secondary: row[key]
+          x: row['report_date'],
+          y: row[key]
         }
-        let s = seriesData.find((s) => (s.label === label))
-        // check for an existing data point
-        let dupe = s.data.find((x) => (x.primary.toLocaleDateString() === d.primary.toLocaleDateString()))
-        if (dupe) {
-          if (d.secondary >= dupe.secondary) {
-            s.data.pop() // remove the smaller
+        let s = chartData.datasets.find((s) => (s.label === label))
+        if (d.y && d.y !== "0") {
+          // check for an existing data point for same day
+          let dupe = s.data.find((x) => (x.x === d.x))
+          if (dupe) {
+            if (d.y >= dupe.y) {
+              s.data.pop() // remove the smaller
+              s.data.push(d)
+            }
+          } else {
             s.data.push(d)
           }
-        }
-        if (!dupe) {
-          s.data.push(d)
         }
       }
     })
   });
 
-  const data = React.useMemo(
-    () => seriesData, []
-  );
-
-  const axes = React.useMemo(
-    () => [
-      { primary: true, type: 'time', position: 'bottom',
-        ticks: val => { console.log(val); return true; },
-        // showTicks: false,
-        format: val => { if (val.indexOf('PM') === -1) return val }
-      },
-      { type: 'linear', position: 'left' },
-    ],
-    []
-  );
+  const chartOptions = {
+    scales: {
+      xAxes: [
+        {
+          type: 'time',
+          time: {
+              unit: 'day'
+          }
+        }
+      ],
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+            callback: function(value, index, values) {
+                return Number(value).toLocaleString();
+            }
+          },
+        },
+      ],
+    },
+    tooltips: {
+      callbacks: {
+        label: function(tooltipItem, data) {
+          var label = data.datasets[tooltipItem.datasetIndex].label || '';
+          if (label) {
+              label += ': ';
+          }
+          label +=  Number(tooltipItem.yLabel).toLocaleString();
+          return label;
+        }
+      }
+    }
+  }
 
   return (
     <div
@@ -100,7 +122,7 @@ const StateChart = ({state, title}) => {
        }}
      >
         <h2>{title}</h2>
-        <Chart data={data} axes={axes} tooltip />
+        <Line data={chartData} options={chartOptions} />
       </div>
   );
 };
