@@ -76,12 +76,21 @@ if (process.env.SEGMENT_KEY) {
   });
 }
 
-if (process.env.GA) {
+if (process.env.GOOGLE_ANALYTICS) {
   gatsbyPlugins.unshift({
     resolve: `gatsby-plugin-google-analytics`,
     options: {
       trackingId: process.env.GA,
       head: true,
+    },
+  });
+}
+
+if (process.env.GAUGES_SITE_ID) {
+  gatsbyPlugins.unshift({
+    resolve: `gatsby-plugin-gauges`,
+    options: {
+      siteId: process.env.GAUGES_SITE_ID,
     },
   });
 }
