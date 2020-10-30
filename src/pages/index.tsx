@@ -15,7 +15,7 @@ import {
   faMailBulk,
   faCalendarCheck,
   faNewspaper,
-  faChartBar
+  faChartBar,
   faArrowRight,
   faCommentDots,
   faInfoCircle, 
@@ -138,7 +138,7 @@ const Index = () => {
           </IndexBox>
 
           <IndexBox
-            icon={faChartBard}
+            icon={faChartBar}
             iconColor={yellow}
             title="Monitor"
             column
