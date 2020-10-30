@@ -112,6 +112,7 @@ const Index = () => {
             title="Prepare to Act"
             column
             shadow
+            width="50%"
           >
             <p><a href="https://www.getrevue.co/profile/countvotes">Sign-up and get connected</a> with groups preparing to take action in your community.</p>
           </IndexBox>
@@ -122,6 +123,7 @@ const Index = () => {
             title="Speak Up"
             column
             shadow
+            width="50%"
           >
             <p>Share the Count Every Vote message on social media and in your local press.</p>
           </IndexBox>
@@ -133,6 +135,7 @@ const Index = () => {
             title="Stay Informed"
             column
             shadow
+            width="50%"
           >
             <p><a href="https://www.getrevue.co/profile/vote"><strong>Get breaking updates</strong></a> from our team of researchers monitoring the 2020 Election.</p>
           </IndexBox>
@@ -143,6 +146,7 @@ const Index = () => {
             title="Monitor"
             column
             shadow
+            width="50%"
           >
             <p><a href="/data">See real-time data</a> from battleground states showing the number of votes cast, counted and rejected.</p>
           </IndexBox>
