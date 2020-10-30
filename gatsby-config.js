@@ -61,6 +61,14 @@ let gatsbyPlugins = [
       typeName: typeNameFromDir,
     }
   },
+  {
+    resolve: "gatsby-plugin-react-svg",
+    options: {
+      rule: {
+        include: /\.inline\.svg$/
+      }
+    }
+  }
 ];
 
 if (process.env.SEGMENT_KEY) {

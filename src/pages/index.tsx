@@ -24,7 +24,7 @@ import {
 
 import { red, yellow, orange, purple, blue } from "../colors";
 
-import MailBox from "../..//static/mail-box.svg";
+import MailBox from "../../static/images/mail-box.svg";
 
 
 const BigImage = styled.div`
