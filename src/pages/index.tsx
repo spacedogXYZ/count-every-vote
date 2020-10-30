@@ -46,7 +46,7 @@ const Index = () => {
             iconColor={blue}
             title="Voters"
           >
-            <p>Connecting voters and activists with resources to mobilize and ensure state officials <strong>Count Every Vote.</p>
+            <p>Connecting voters and activists with resources to mobilize and ensure state officials <strong>Count Every Vote.</strong></p>
           </IndexBox>
 
           <IndexBox
