@@ -112,7 +112,7 @@ const Index = () => {
             column
             shadow
           >
-            <p>Sign-up and get connected with groups preparing to take action in your community.</p>
+            <p><a href="https://www.getrevue.co/profile/countvotes">Sign-up and get connected</a> with groups preparing to take action in your community.</p>
           </IndexBox>
 
           <IndexBox
