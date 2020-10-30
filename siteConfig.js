@@ -16,12 +16,12 @@ module.exports ={
   "header": {
     "navigation": [
       {
-        "label": "Register to Vote",
-        "url": "https://www.voteamerica.com/"
-      },
-      {
         "label": "Articles",
         "url": "/articles"
+      },
+      {
+        "label": "Data",
+        "url": "/data"
       },
       {
         "label": "Contact",
