@@ -1,5 +1,5 @@
 let DEVELOPMENT = process.env.NODE_ENV === `development`
-let SITE_URL = DEVELOPMENT ? "http://localhost:8000" : "https://count-every-vote.netlify.app"
+let SITE_URL = DEVELOPMENT ? "http://localhost:8000" : "https://www.votecounts.org"
 
 module.exports ={
   "siteUrl": SITE_URL,
