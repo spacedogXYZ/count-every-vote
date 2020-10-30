@@ -74,7 +74,7 @@ module.exports ={
     "externalLink": ""
   },
   "contactWidget": {
-    "title": "Contact Vote",
+    "title": "Contact Vote Counts",
     "successMessage": "We'll get in touch with you soon."
   },
   "metadata": {
