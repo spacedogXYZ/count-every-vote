@@ -15,6 +15,7 @@ import {
   faMailBulk,
   faCalendarCheck,
   faNewspaper,
+  faChartBar
   faArrowRight,
   faCommentDots,
   faInfoCircle, 
@@ -133,17 +134,17 @@ const Index = () => {
             column
             shadow
           >
-            <p>Get breaking updates from our team of researchers monitoring the 2020 Election.</p>
+            <p><a href="https://www.getrevue.co/profile/vote"><strong>Get breaking updates</strong></a> from our team of researchers monitoring the 2020 Election.</p>
           </IndexBox>
 
           <IndexBox
-            icon={faChalkboard}
+            icon={faChartBard}
             iconColor={yellow}
             title="Monitor"
             column
             shadow
           >
-            <p><a href="https://www.getrevue.co/profile/vote"><strong>Get breaking updates</strong></a> from our team of researchers monitoring the 2020 Election.</p>
+            <p><a href="/data">See real-time data</a> from battleground states showing the number of votes cast, counted and rejected.</p>
           </IndexBox>
         </BoxContainer>
 
