@@ -7,13 +7,21 @@ import Section from "@components/Section";
 import StateChart from "../components/chart/State.Chart";
 
 const DataPage = ({data, pageContext}) => {
+  let dataSource = data.allElectprojectCsv.nodes[0].source;
+
   return (
     <Layout>
       <Section relative id="Data__Section">
         <StateChart state={pageContext.state} title={pageContext.title} electProject={data.allElectprojectCsv.nodes}/>
       </Section>
       <Section>
-        <p>Data processed by Michael McDonald, <a href="https://electproject.github.io/Early-Vote-2020G/index.html">United States Elections Project, CC-SA 2020</a></p>
+        <p>Data processed by Michael McDonald,
+        <a href="https://electproject.github.io/Early-Vote-2020G/index.html">United States Elections Project, CC-SA 2020</a>.{' '}
+        { dataSource.startsWith("http")
+          ? ( <a href={dataSource}>Official Source</a> ) 
+          : ( <span>Official Source: {dataSource}</span> )
+        }.
+        </p>
       </Section>
     </Layout>
   );
