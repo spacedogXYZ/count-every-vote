@@ -16,6 +16,10 @@ module.exports ={
   "header": {
     "navigation": [
       {
+        "label": "About",
+        "url": "/about"
+      },
+      {
         "label": "Articles",
         "url": "/articles"
       },
