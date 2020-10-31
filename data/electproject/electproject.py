@@ -29,6 +29,9 @@ def extract_data(response):
     data = parsed['x']['hc_opts']['series'][0]['data']
         
     for row in data:
+        if row['state'] == 'TX':
+            row['mail_sent_req_2020'] = None
+
         extracted.append(row)
     return extracted
 
