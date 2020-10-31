@@ -3,9 +3,9 @@ import styled from "@emotion/styled";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const IndexBox: React.FC = ({ title, icon, iconColor, shadow, column, children }) => {
+const IndexBox: React.FC = ({ title, icon, iconColor, shadow, column, width, children }) => {
   return (
-    <BoxWrapper shadow={shadow} column={column}>
+    <BoxWrapper shadow={shadow} column={column} width={width}>
       <IconWrapper>
         <FontAwesomeIcon icon={icon} size="3x" color={iconColor} />
       </IconWrapper>
@@ -35,8 +35,10 @@ export const BoxContainer = styled.div`
 
 const BoxWrapper = styled.div`
   display: flex;
-  @media (min-width: 420px) {
-    max-width: 75%;
+  width: ${props =>
+    props.width || 'auto'};
+  @media (max-width: 420px) {
+    width: 100%;
   }
   margin: 0 2rem 2rem 0; 
   padding: 2rem;

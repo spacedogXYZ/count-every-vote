@@ -61,6 +61,14 @@ let gatsbyPlugins = [
       typeName: typeNameFromDir,
     }
   },
+  {
+    resolve: "gatsby-plugin-react-svg",
+    options: {
+      rule: {
+        include: /\.inline\.svg$/
+      }
+    }
+  }
 ];
 
 if (process.env.SEGMENT_KEY) {
@@ -76,7 +84,7 @@ if (process.env.SEGMENT_KEY) {
   });
 }
 
-if (process.env.GOOGLE_ANALYTICS) {
+if (process.env.GA) {
   gatsbyPlugins.unshift({
     resolve: `gatsby-plugin-google-analytics`,
     options: {
@@ -85,6 +93,16 @@ if (process.env.GOOGLE_ANALYTICS) {
     },
   });
 }
+
+if (process.env.GTAG) {
+  gatsbyPlugins.unshift({
+    resolve: `gatsby-plugin-google-gtag`,
+    options: {
+      trackingId: process.env.GTAG
+    },
+  });
+}
+
 
 if (process.env.GAUGES_SITE_ID) {
   gatsbyPlugins.unshift({
@@ -113,16 +131,6 @@ if (process.env.GATSBY_HOTJAR_ID) {
       id: process.env.GATSBY_HOTJAR_ID,
       sv: 6,
       optimize: true,
-    },
-  });
-}
-
-if (process.env.GATSBY_GTAG_MANAGER_ID) {
-  gatsbyPlugins.unshift({
-    resolve: `gatsby-plugin-google-tagmanager`,
-    options: {
-      id: process.env.GATSBY_GTAG_MANAGER_ID,
-      includeInDevelopment: true,
     },
   });
 }

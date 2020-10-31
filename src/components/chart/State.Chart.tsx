@@ -17,26 +17,8 @@ const ChartWrapper = styled.div`
   display: inline-block;
 `
 
-const StateChart = ({state, title}) => {
-  const dataQuery = graphql`
-    {
-      allElectprojectCsv(sort: {fields: report_date}) {
-        nodes {
-          state
-          report_date
-          source
-          total_early_2020
-          in_person_2020
-          mail_accept_2020
-          mail_reject_2020
-          mail_sent_req_2020
-        }
-      }
-    }
-  `;
-  const electProject = useStaticQuery(dataQuery).allElectprojectCsv.nodes;
-
-  // this is organized as a row for each state date
+const StateChart = ({state, title, electProject}) => {
+  // electProject is organized as a row for each state date
   // invert so each reporting type is a series
   var chartData = {};
   chartData.datasets = Object.keys(LABELS).map((l) => (
@@ -49,7 +31,7 @@ const StateChart = ({state, title}) => {
   ));
 
   electProject.forEach((row) => {
-    // filter here, not in query
+    // filter on state here, just to be sure
     if (row.state !== state) {
       return;
     }
@@ -115,10 +97,9 @@ const StateChart = ({state, title}) => {
   return (
     <div
        style={{
-         width: '400px',
-         height: '300px',
-         display: 'inline-block',
-         margin: 50
+        width: '100%',
+        display: 'inline-block',
+        marginTop: 50
        }}
      >
         <h2>{title}</h2>

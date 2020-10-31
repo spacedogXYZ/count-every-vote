@@ -16,12 +16,16 @@ module.exports ={
   "header": {
     "navigation": [
       {
-        "label": "Register to Vote",
-        "url": "https://www.voteamerica.com/"
+        "label": "About",
+        "url": "/about"
       },
       {
         "label": "Articles",
         "url": "/articles"
+      },
+      {
+        "label": "Data",
+        "url": "/2020"
       },
       {
         "label": "Contact",
@@ -74,7 +78,7 @@ module.exports ={
     "externalLink": ""
   },
   "contactWidget": {
-    "title": "Contact Vote",
+    "title": "Contact Vote Counts",
     "successMessage": "We'll get in touch with you soon."
   },
   "metadata": {
