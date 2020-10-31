@@ -86,7 +86,7 @@ const Index = () => {
               iconColor={orange}
               title="Delayed Results"
             >
-              <p>Many states are prohibited by law from counting mail-in ballots until Election Day and some will receive ballots up to 10 days after Nov. 3.</p>
+              <p>Many states are prohibited by law from counting mail-in ballots until Election Day and some will receive ballots up to 20 days after Nov. 3.</p>
             </IndexBox>
 
             <IndexBox
@@ -94,7 +94,7 @@ const Index = () => {
               iconColor={red}
               title="Media Responsibility"
             >
-              <p>That means media will needs to prepare people for a protracted election and cover Election Night responsibly.</p>
+              <p>That means media needs to prepare people for a protracted post-election period and cover Election Night responsibly.</p>
             </IndexBox>
           </BoxContainer>
 
