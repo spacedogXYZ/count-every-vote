@@ -38,7 +38,7 @@ const StateHeader = styled.h3`
 `;
 
 const StateLink = ({id, title}) => (
-  <Link to={`/data/${id}`}>
+  <Link to={`/2020/${id}`}>
     <StateIcon id={id} />
     <StateHeader>{title}</StateHeader>
   </Link>
