@@ -98,7 +98,17 @@ if (process.env.GTAG) {
   gatsbyPlugins.unshift({
     resolve: `gatsby-plugin-google-gtag`,
     options: {
-      trackingId: process.env.GTAG
+      trackingIds: [
+        process.env.GTAG
+      ],
+      gtagConfig: {
+        anonymize_ip: true,
+      },
+      pluginConfig: {
+        head: true,
+        respectDNT: true,
+        // exclude: ["/preview/**", "/do-not-track/me/too/"],
+      },
     },
   });
 }
