@@ -25,7 +25,7 @@ module.exports ={
       },
       {
         "label": "Data",
-        "url": "/data"
+        "url": "/2020"
       },
       {
         "label": "Contact",

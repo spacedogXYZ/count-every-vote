@@ -15,7 +15,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const statePageTemplate = path.resolve(`src/templates/State.Page.tsx`);
   statePages.forEach(node => {
     createPage({
-      path: `/data/${node.state}`,
+      path: `/2020/${node.state}`,
       component: statePageTemplate,
       context: {
         state: node.state,
