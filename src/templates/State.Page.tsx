@@ -19,7 +19,7 @@ const DataPage = ({data, pageContext}) => {
         <a href="https://electproject.github.io/Early-Vote-2020G/index.html">United States Elections Project, CC-SA 2020</a>.{' '}
         { dataSource.startsWith("http")
           ? ( <a href={dataSource}>Official Source</a> ) 
-          : ( <span>Official Source: {dataSource}</span> )
+          : ( <span>{dataSource}</span> )
         }.
         </p>
       </Section>
