@@ -12,9 +12,13 @@ const DataPage = ({data, pageContext}) => {
 
   return (
     <Layout>
-      <Section relative id="Data__Section">
-        <StateChart state={pageContext.state} title={pageContext.title} electProject={data.allElectprojectCsv.nodes}/>
+      <Section id="Data__Section">
+        { pageLink && (
+          <h1><Link to={`/${pageLink}/`}>{pageContext.title} State Guide</Link></h1>
+        )}
+        <StateChart state={pageContext.state} title={`${pageContext.title} 2020 Vote Counts`} electProject={data.allElectprojectCsv.nodes}/>
       </Section>
+
       <Section>
         <p>Data processed by Michael McDonald,
         <a href="https://electproject.github.io/Early-Vote-2020G/index.html">United States Elections Project, CC-SA 2020</a>.{' '}
@@ -24,11 +28,6 @@ const DataPage = ({data, pageContext}) => {
         }.
         </p>
       </Section>
-      { pageLink && (
-        <Section relative>
-          <p><Link to={`/${pageLink}`}>More about {pageContext.title} Counts</Link></p>
-        </Section>
-      )}
     </Layout>
   );
 };

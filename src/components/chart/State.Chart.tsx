@@ -102,7 +102,7 @@ const StateChart = ({state, title, electProject}) => {
         width: '100%',
         display: 'inline-block',
         minHeight: 300,
-        marginTop: 50
+        marginTop: 20
        }}
      >
         <h2>{title}</h2>

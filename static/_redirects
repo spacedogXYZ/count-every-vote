@@ -1,9 +1,17 @@
 # redirects
-/data /2020
-/data/FL /2020/FL
-/data/GA /2020/GA
-/data/MI /2020/MI
-/data/OH /2020/OH
-/data/PA /2020/PA
-/data/TX /2020/TX
-/data/WI /2020/WI
+/2020 /state-guide
+/2020/FL /florida/data
+/2020/GA /georgia/data
+/2020/MI /michigan/data
+/2020/OH /ohio/data
+/2020/PA /pennsylvania/data
+/2020/TX /texas/data
+/2020/WI /wisconsin/data
+
+/data/FL /florida/data
+/data/GA /georgia/data
+/data/MI /michigan/data
+/data/OH /ohio/data
+/data/PA /pennsylvania/dataa
+/data/TX /texas/data
+/data/WI /wisconsin/data

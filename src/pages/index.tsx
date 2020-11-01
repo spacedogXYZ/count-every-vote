@@ -148,7 +148,7 @@ const Index = () => {
             shadow
             width="50%"
           >
-            <p><a href="/data">See real-time data</a> from battleground states showing the number of votes cast, counted and rejected.</p>
+            <p><a href="/state-guide">See real-time data</a> from battleground states showing the number of votes cast, counted and rejected.</p>
           </IndexBox>
         </BoxContainer>
 

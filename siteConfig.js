@@ -24,8 +24,8 @@ module.exports ={
         "url": "/articles"
       },
       {
-        "label": "Data",
-        "url": "/2020"
+        "label": "State Guide",
+        "url": "/state-guide"
       },
       {
         "label": "Contact",
