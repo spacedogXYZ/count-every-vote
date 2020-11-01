@@ -72,6 +72,8 @@ const StateChart = ({state, title, electProject}) => {
       yAxes: [
         {
           ticks: {
+            autoSkip: true,
+            autoSkipPadding: 50,
             beginAtZero: true,
             callback: function(value, index, values) {
                 return Number(value).toLocaleString();
@@ -99,6 +101,7 @@ const StateChart = ({state, title, electProject}) => {
        style={{
         width: '100%',
         display: 'inline-block',
+        minHeight: 300,
         marginTop: 50
        }}
      >

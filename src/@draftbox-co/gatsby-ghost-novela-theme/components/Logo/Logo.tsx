@@ -51,7 +51,7 @@ const LogoContainer = styled.div`
   ${mediaqueries.phablet`
     .logo {
       height: auto;
-      width:70%
+      width: 30%;
     }
   `}
 
