@@ -23,7 +23,7 @@ const SectionHeading = styled.h2`
   font-weight: var(--system-font-semibold);
   font-size: 36px;
   line-height: 1.15;
-  margin-bottom: 1.25rem;
+  margin-bottom: 4rem;
   color: ${(p) => p.theme.colors.primary};
 
   a {
@@ -31,10 +31,11 @@ const SectionHeading = styled.h2`
   }
 
   ${mediaqueries.desktop`
-    font-size: 38px
+    font-size: 38px;
   `}
 
   ${mediaqueries.phablet`
     font-size: 32px;
+    margin-bottom: 2rem;
   `}
 `;
