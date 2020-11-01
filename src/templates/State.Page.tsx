@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import styled from "@emotion/styled";
 
 import Layout from "@components/Layout";
@@ -8,6 +8,7 @@ import StateChart from "../components/chart/State.Chart";
 
 const DataPage = ({data, pageContext}) => {
   let dataSource = data.allElectprojectCsv.nodes[0].source;
+  let pageLink = data.ghostPage && data.ghostPage.slug;
 
   return (
     <Layout>
@@ -23,6 +24,11 @@ const DataPage = ({data, pageContext}) => {
         }.
         </p>
       </Section>
+      { pageLink && (
+        <Section relative>
+          <p><Link to={`/${pageLink}`}>More about {pageContext.title} Counts</Link></p>
+        </Section>
+      )}
     </Layout>
   );
 };
@@ -30,7 +36,7 @@ const DataPage = ({data, pageContext}) => {
 export default DataPage;
 
 export const query = graphql`
-    query StateQuery($state: String) {
+    query StateQuery($state: String, $countSlug: String) {
       allElectprojectCsv(filter: {state: {eq: $state}}, sort: {fields: report_date}) {
         nodes {
           state
@@ -42,6 +48,11 @@ export const query = graphql`
           mail_reject_2020
           mail_sent_req_2020
         }
+      }
+
+      ghostPage(slug: {eq: $countSlug}) {
+        id
+        slug
       }
     }
   `;

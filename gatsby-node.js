@@ -20,6 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         state: node.state,
         title: node.title,
+        countSlug: `2020-${node.state.toLowerCase()}-count`, // thought this would be able to have slashes in it, but ghost converts to dashes
       }
     });
   });
