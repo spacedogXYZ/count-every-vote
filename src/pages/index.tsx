@@ -94,7 +94,7 @@ const Index = () => {
               iconColor={red}
               title="Media Responsibility"
             >
-              <p>That means media needs to prepare people for a protracted post-election period and cover Election Night responsibly.</p>
+              <p>That means media needs to prepare people for a protracted post-election period and cover Election Night accurately and responsibly.</p>
             </IndexBox>
           </BoxContainer>
 
