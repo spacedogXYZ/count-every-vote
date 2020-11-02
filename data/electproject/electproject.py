@@ -9,7 +9,7 @@ REQUEST_HEADERS = {'User-Agent' : "bot"}
 
 DESIRED_FIELDS = ['state', 'report_date', 'source',
     'mail_sent_req_2020', 'mail_accept_2020', 'mail_reject_2020',
-    'total_early_2020', 'in_person_2020',
+    'total_early_2020', 'in_person_2020', 'total_ballots_2020',
     'total_ballots_2016', 'total_early_2016']
 
 def get_page(url):
