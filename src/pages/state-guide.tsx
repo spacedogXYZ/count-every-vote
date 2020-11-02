@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { graphql, Link } from "gatsby";
 import styled from "@emotion/styled";
 
 import Layout from "@components/Layout";
@@ -38,17 +38,28 @@ const StateIcon = ({id}) => (
 const StateHeader = styled.h3`
   color: ${props => props.color || 'black'};
   text-align: center;
+  display: block;
 `;
 
-const StateLink = ({id, title}) => (
-  <Link to={`/${title.replace(' ','-').toLowerCase()}/data/`}>
+const StateLink = ({id, title, guides}) => {
+  let slug = title.replace(' ','-').toLowerCase();
+  let guideLink = guides.find((g) => g.slug === slug)
+  return (<div>
     <StateIcon id={id} />
-    <StateHeader>{title}</StateHeader>
-  </Link>
-)
+    <Link to={`/${slug}/data/`}>
+      <StateHeader>{title} Data</StateHeader>
+    </Link>
+    { guideLink && (
+      <Link to={`/${guideLink.slug}/`}>
+        <StateHeader>{title} Guide</StateHeader>
+      </Link>
+    )}
+  </div>)
+}
 
 
-const DataPage = () => {
+const DataPage = ({data}) => {
+  let guides = data.allGhostPage.nodes;
   return (
     <Layout>
       <StateSVG />
@@ -99,17 +110,17 @@ const DataPage = () => {
         </BoxContainer>
 
         <BoxContainer>
-          <StateLink id="FL" title="Florida" />
-          <StateLink id="GA" title="Georgia" />
-          <StateLink id="MI" title="Michigan" />
+          <StateLink id="FL" title="Florida" guides={guides} />
+          <StateLink id="GA" title="Georgia" guides={guides} />
+          <StateLink id="MI" title="Michigan" guides={guides} />
         </BoxContainer>
         <BoxContainer>
-          <StateLink id="OH" title="Ohio" />
-          <StateLink id="PA" title="Pennsylvania" />
-          <StateLink id="TX" title="Texas" />
+          <StateLink id="OH" title="Ohio" guides={guides} />
+          <StateLink id="PA" title="Pennsylvania" guides={guides} />
+          <StateLink id="TX" title="Texas" guides={guides} />
         </BoxContainer>
         <BoxContainer>
-          <StateLink id="WI" title="Wisconsin" />
+          <StateLink id="WI" title="Wisconsin" guides={guides} />
         </BoxContainer>
       </IndexSection>
     </Layout>
@@ -117,3 +128,15 @@ const DataPage = () => {
 };
 
 export default DataPage;
+
+export const query = graphql`
+    query StateGuidesQuery {
+      allGhostPage(filter: {slug: {in: ["florida","georgia","michigan","ohio","pennsylvania","texas","wisconsin"]}}) {
+        nodes {
+          slug
+          id
+        }
+      }
+    }
+  `;
+
