@@ -5,19 +5,39 @@ import { HorizontalBar } from 'react-chartjs-2';
 import { white, red, yellow, orange, purple, blue } from "../../colors";
 
 const LABELS = {
-  in_person_2020: {s: 'In Person Votes 2020', c: yellow},
-  total_early_2020: {s: 'Total Early Votes 2020', c: red},
-  total_ballots_2016: {s: 'Total Ballots 2016', c: "green"},
+  in_person_2020: {s: 'In Person Early Votes', c: yellow},
+  mail_accept_2020: {s: 'Mail Votes', c: purple},
+  // total_ballots_2020: {s: 'Total Ballots 2020', c: "green"},
 };
+
+const FlexWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`
 
 const ChartWrapper = styled.div`
   display: inline-block;
+  height: 150;
+  width: 80%;
+  margin-top: 20;
 `
 
-const StateBar = ({state, title, electProject}) => {
-  var chartData = {};
+const BigPct = styled.span`
+  font-size: 1.15em;
+  font-weight: bold;
+`
+
+function pctFormat(num) {
+  return Number(num).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2}); 
+}
+
+const StateBar = ({state, title, electProject, population}) => {
+  var chartData = {
+    labels: ['2020']
+  };
   chartData.datasets = Object.keys(LABELS).map((l) => (
     {
+      stack: l.split('_').pop(),
       label: LABELS[l].s,
       backgroundColor: LABELS[l].c,
       fill: true,
@@ -38,7 +58,6 @@ const StateBar = ({state, title, electProject}) => {
         // only keep the largest number
         if (parseInt(d) > (s.data[s.data.length] || 0)) {
           s.data = [d]
-          chartData['labels'] = [row['report_date']]
         }
       }
     })
@@ -50,7 +69,7 @@ const StateBar = ({state, title, electProject}) => {
     scales: {
       yAxes: [
         {
-          stacked: false,
+          stacked: true,
           ticks: {
             beginAtZero: true,
           },
@@ -58,7 +77,7 @@ const StateBar = ({state, title, electProject}) => {
       ],
       xAxes: [
         {
-          stacked: false,
+          stacked: true,
           ticks: {
             autoSkip: true,
             autoSkipPadding: 50,
@@ -82,22 +101,35 @@ const StateBar = ({state, title, electProject}) => {
         }
       }
     }
-}
+  }
 
-  return (
-    <div
-       style={{
-        width: '100%',
-        display: 'block',
-        position: 'relative',
-        height: 150,
-        marginTop: 20
-       }}
-     >
-        <h2>{title}</h2>
+  // calculate turnout percentages
+
+  // parse VEP string to int
+  let VEP_STRING = population[0]['Voting_Eligible_Population__VEP_']
+  let VEP_VALUE = VEP_STRING.replace(/,/g, '')
+  let TOTAL_VEP = parseInt(VEP_VALUE, 10)
+
+  let LATEST_ELECTPROJECT = electProject.pop()
+  let TOTAL_2020 = LATEST_ELECTPROJECT.total_early_2020 + LATEST_ELECTPROJECT.in_person_2020
+  let TOTAL_2016 = LATEST_ELECTPROJECT.total_ballots_2016
+  chartData.labels =[LATEST_ELECTPROJECT.report_date]
+
+  let PCT_2016 = TOTAL_2016 / TOTAL_2020
+  let PCT_VEP = TOTAL_2020 / TOTAL_VEP
+
+  return (<>
+    <h2>{title}</h2>
+    <FlexWrapper>
+      <ChartWrapper>
         <HorizontalBar data={chartData} options={chartOptions} />
+      </ChartWrapper>
+      <div>
+        <div><BigPct>{pctFormat(PCT_2016)}</BigPct> of 2016 Turnout</div>
+        <div><BigPct>{pctFormat(PCT_VEP)}</BigPct> of 2020 Voting Population</div>
       </div>
-  );
+    </FlexWrapper>
+  </>);
 };
 
 export default StateBar;
