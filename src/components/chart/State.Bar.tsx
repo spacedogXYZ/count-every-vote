@@ -12,13 +12,22 @@ const LABELS = {
 
 const FlexWrapper = styled.div`
   display: flex;
+  flex-direction: row;
   align-items: center;
+
+  @media (max-width: 420px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `
 
 const ChartWrapper = styled.div`
   display: inline-block;
   height: 150;
   width: 80%;
+  @media (max-width: 420px) {
+    width: 100%;
+  }
   margin-top: 20;
 `
 
