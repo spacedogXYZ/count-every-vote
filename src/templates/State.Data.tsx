@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import Layout from "@components/Layout";
 import Section from "@components/Section";
 import StateChart from "../components/chart/State.Chart";
+import StateBar from "../components/chart/State.Bar";
 
 const DataPage = ({data, pageContext}) => {
   let dataSource = data.allElectprojectCsv.nodes[0].source;
@@ -16,6 +17,8 @@ const DataPage = ({data, pageContext}) => {
         { pageLink && (
           <h1><Link to={`/${pageLink}/`}>{pageContext.title} State Guide</Link></h1>
         )}
+
+        <StateBar state={pageContext.state} title={`${pageContext.title} 2020 Turnout`} electProject={data.allElectprojectCsv.nodes}/>
         <StateChart state={pageContext.state} title={`${pageContext.title} 2020 Vote Counts`} electProject={data.allElectprojectCsv.nodes}/>
       </Section>
 
@@ -46,6 +49,7 @@ export const query = graphql`
           mail_accept_2020
           mail_reject_2020
           mail_sent_req_2020
+          total_ballots_2016
         }
       }
 

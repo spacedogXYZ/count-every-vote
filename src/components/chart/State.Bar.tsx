@@ -1,30 +1,26 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import { Line } from 'react-chartjs-2';
+import { HorizontalBar } from 'react-chartjs-2';
 import { white, red, yellow, orange, purple, blue } from "../../colors";
 
 const LABELS = {
-  total_early_2020: {s: 'Total Early Votes', c: red},
-  in_person_2020: {s: 'In Person Votes', c: yellow},
-  mail_accept_2020: {s: 'Mail Ballots Accepted', c: purple},
-  mail_reject_2020: {s: 'Mail Ballots Rejected', c: orange},
-  mail_sent_req_2020: {s: 'Mail Ballots Requested', c: blue},
+  in_person_2020: {s: 'In Person Votes 2020', c: yellow},
+  total_early_2020: {s: 'Total Early Votes 2020', c: red},
+  total_ballots_2016: {s: 'Total Ballots 2016', c: "green"},
 };
 
 const ChartWrapper = styled.div`
   display: inline-block;
 `
 
-const StateChart = ({state, title, electProject}) => {
-  // electProject is organized as a row for each state date
-  // invert so each reporting type is a series
+const StateBar = ({state, title, electProject}) => {
   var chartData = {};
   chartData.datasets = Object.keys(LABELS).map((l) => (
     {
       label: LABELS[l].s,
-      borderColor: LABELS[l].c,
-      fill: false,
+      backgroundColor: LABELS[l].c,
+      fill: true,
       data: [],
     }
   ));
@@ -37,39 +33,32 @@ const StateChart = ({state, title, electProject}) => {
     Object.keys(row).forEach((key) => {
       if (LABELS[key]) {
         let label = LABELS[key].s;
-        let d = {
-          x: row['report_date'],
-          y: row[key]
-        }
+        let d = row[key]
         let s = chartData.datasets.find((s) => (s.label === label))
-        if (d.y && d.y !== "0") {
-          // check for an existing data point for same day
-          let dupe = s.data.find((x) => (x.x === d.x))
-          if (dupe) {
-            if (d.y >= dupe.y) {
-              s.data.pop() // remove the smaller
-              s.data.push(d)
-            }
-          } else {
-            s.data.push(d)
-          }
+        // only keep the largest number
+        if (parseInt(d) > (s.data[s.data.length] || 0)) {
+          s.data = [d]
+          chartData['labels'] = [row['report_date']]
         }
       }
     })
   });
 
   const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
     scales: {
-      xAxes: [
-        {
-          type: 'time',
-          time: {
-              unit: 'day'
-          }
-        }
-      ],
       yAxes: [
         {
+          stacked: false,
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+      xAxes: [
+        {
+          stacked: false,
           ticks: {
             autoSkip: true,
             autoSkipPadding: 50,
@@ -88,12 +77,12 @@ const StateChart = ({state, title, electProject}) => {
           if (label) {
               label += ': ';
           }
-          label +=  Number(tooltipItem.yLabel).toLocaleString();
+          label +=  Number(tooltipItem.xLabel).toLocaleString();
           return label;
         }
       }
     }
-  }
+}
 
   return (
     <div
@@ -101,14 +90,14 @@ const StateChart = ({state, title, electProject}) => {
         width: '100%',
         display: 'block',
         position: 'relative',
-        minHeight: 300,
-        marginTop: 50
+        height: 150,
+        marginTop: 20
        }}
      >
         <h2>{title}</h2>
-        <Line data={chartData} options={chartOptions} />
+        <HorizontalBar data={chartData} options={chartOptions} />
       </div>
   );
 };
 
-export default StateChart;
+export default StateBar;
