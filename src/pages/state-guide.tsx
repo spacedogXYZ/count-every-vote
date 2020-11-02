@@ -21,6 +21,7 @@ const StateIconWrapper = styled.div`
   color: ${props => props.color || 'black'};
   svg {
     stroke-width: 1.25;
+    stroke-linejoin: round;
     stroke: currentColor;
     fill: none;
   }
