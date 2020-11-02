@@ -207,6 +207,10 @@ const ArticleBody = styled.article`
   // padding-left: 68px;
   transition: background 0.2s linear;
 
+  & p em {
+    background-color: #fdffb6;
+  } 
+
   ${mediaqueries.desktop`
     // padding-left: 53px;
   `}
