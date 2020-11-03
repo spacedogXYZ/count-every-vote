@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import Layout from "@components/Layout";
+import { MetaData } from "@components/meta";
 import IndexHero from "../components/index/Index.Hero";
 import IndexSection from "../components/index/Index.Section";
 import IndexBox, { BoxContainer } from "../components/index/Index.Box";
@@ -37,6 +38,7 @@ const BigImage = styled.div`
 const Index = () => {
   return (
     <Layout>
+      <MetaData data={{}} location={{pathname: '/'}} />
       <IndexHero />
       <IndexSection title={"Our Plan"}>
         <p>We are nonpartisan movement built on the simple idea that elections must reflect the will of the people and that can only happen if we <strong>Count Every Vote</strong>. We need to know that every eligible voter will have the opportunity to vote without restriction and that every vote will be counted.</p>

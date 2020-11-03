@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby";
 import styled from "@emotion/styled";
 
 import Layout from "@components/Layout";
+import { MetaData } from "@components/meta";
 import Section from "@components/Section";
 
 import IndexBox, { BoxContainer } from "../components/index/Index.Box";
@@ -62,6 +63,7 @@ const DataPage = ({data}) => {
   let guides = data.allGhostPage.nodes;
   return (
     <Layout>
+      <MetaData data={{}} location={{pathname: '/state-guide'}} />
       <StateSVG />
       <IndexSection title="State Counting Guide">
         <BoxContainer>
