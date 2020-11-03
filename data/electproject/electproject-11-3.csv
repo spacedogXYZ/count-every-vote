@@ -1,0 +1,52 @@
+state,report_date,source,mail_sent_req_2020,mail_accept_2020,mail_reject_2020,total_early_2020,in_person_2020,total_ballots_2016,total_early_2016
+MA,11/2/2020,Communication from Massachusetts Secretary of State's office,1592127,1375432,0,2342656,,3378801,0
+WA,11/2/2020,https://www.sos.wa.gov/elections/research/data-and-statistics.aspx,4877969,3545289,0,3545289,,3363440,3363440
+CA,11/2/2020,https://docs.google.com/forms/d/e/1FAIpQLSfipraqZymaSWDDYjVkidhZ0fpvHGpLuALrX9FxSr0JKeIDGw/viewform,22042262,12090534,0,12090534,,14610509,0
+OR,11/2/2020,https://sos.oregon.gov/voting/Pages/current-election.aspx,2949687,1969549,0,1969549,,2056310,2056310
+WI,11/3/2020,https://elections.wi.gov/index.php/elections-voting/statistics,1421908,1275019,0,1924838,,2976150,0
+ME,11/2/2020,https://www.maine.gov/sos/cec/elec/data/index.html,531145,499939,0,499939,,771892,0
+MI,11/2/2020,Data provided by Michigan Secretary of State's office,3318609,2841696,1856,2841696,,4874619,0
+NV,11/2/2020,https://www.nvsos.gov/sos/elections/voters/election-turnout-statistics,1768994,545399,0,1088775,,1125429,0
+NM,11/1/2020,Data Provided by New Mexico Department of State,385884,314372,0,782047,,804043,0
+CO,11/2/2020,Data provided by Colorado Secretary of State's office,4111226,2683857,0,2740104,,2859216,2859216
+WY,11/2/2020,Communication from Wyoming Secretary of State's Office,140934,131516,0,131516,,258788,0
+KS,11/2/2020,Data provided by Kansas Secretary of State's office,508187,422104,0,770324,,1225667,0
+NE,11/2/2020,Data provided by Nebraska Secretary of State's office,546036,482919,0,482919,,860573,0
+OK,11/2/2020,https://www.ok.gov/elections/Absentee_Ballot_Statistics.html,352377,279186,0,444729,,1452992,0
+MO,11/1/2020,https://twitter.com/MissouriSOS/status/1323321086302429186,876929,827978,0,827978,,2025985,0
+IL,11/2/2020,https://elections.il.gov/VotingAndRegistrationSystems/PreElectionCounts.aspx?MID=l0hlXuSrKL0%3d&T=637317257975604269,2345954,1759245,0,3591646,,5666118,0
+IN,10/29/2020,Communication from Indiana Secretary of State's Office,580021,497468,0,1712012,,2807676,0
+VT,11/2/2020,https://sos.vermont.gov/elections/election-info-resources/elections-results-data/,452266,255141,0,255141,,320467,0
+AR,11/2/2020,Data provided by Arkansas Secretary of State's office,130176,113250,0,854405,,1137772,0
+TX,10/30/2020,https://earlyvoting.texas-election.com/Elections/getElectionDetails.do,,973143,0,9719101,,8975000,0
+RI,11/2/2020,https://app.powerbigov.us/view?r=eyJrIjoiMGEwN2E0MzUtOTA0OC00ZDA3LThjMTItZDZhYTBjYjU5ZjhjIiwidCI6IjJkMGYxZGI2LWRkNTktNDc3Mi04NjVmLTE5MTQxNzVkMDdjMiJ9,175273,156178,0,305724,,469589,0
+AL,11/2/2020,https://twitter.com/alasecofstate/status/1323282864251830273,331104,300402,0,300402,,2134061,0
+MS,11/1/2020,https://mssos.sharefile.com/share/view/s512f4ecd9684d6e8/fo0396ba-d6a9-4e3b-afae-1a669884b304,248335,231031,0,231031,,1209357,0
+NC,11/2/2020,https://dl.ncsbe.gov/?prefix=ENRS/2020_11_03/,1455328,937895,7675,4550963,,4769640,3146722
+VA,11/2/2020,https://results.elections.virginia.gov/vaelections/2020%20November%20General/Site/Statistics/Absentee.html or https://www.vpap.org/elections/early-voting/,1128949,962877,0,2758957,,3984631,0
+IA,11/2/2020,Data provided by Iowa Secretary of State's office,1002273,955975,1559,955975,,1581371,0
+MD,11/1/2020,https://elections.maryland.gov/press_room/index.html,1683046,1316928,0,2178906,,2807322,0
+DE,10/29/2020,Data provided by Delaware Secretary of State's office,186242,148424,0,148424,,445228,0
+PA,11/3/2020,Data provided by Pennsylvania Secretary of State's office,3098947,2506557,951,2506557,,6165478,0
+NJ,11/1/2020,Data Provided by New Jersey Department of State,6054277,3510293,0,3510293,,3957303,0
+NY,11/2/2020,Communication from New York State Board of Elections,2286047,1236404,0,3743745,,7786881,0
+ID,11/1/2020,https://twitter.com/L2political/status/1322918125373919232,402310,402310,0,402310,,710545,0
+SD,10/30/2020,https://sdsos.gov/elections-voting/upcoming-elections/general-information/2020-General-Election-Absentee-Numbers.aspx,134894,118961,0,202464,,378995,0
+CT,11/2/2020,Data provided by Connecticut Secretary of State's office,715003,636000,0,636000,,1675955,0
+NH,10/27/2020,https://sos.nh.gov/elections/information/notices/absentee-ballots-requested-for-general-election/,225002,181577,0,181577,,755850,0
+KY,11/1/2020,https://spectrumnews1.com/ky/lexington/news/2020/11/02/early-in-person-voting-in-kentucky,655452,575000,0,1508000,,1955195,0
+OH,11/2/2020,Data scraped from county websites,3211203,3000827,0,3000827,,5607641,0
+TN,10/29/2020,https://sos.tn.gov/products/elections-executive/nov-3-election-information,210408,210408,0,2280747,,2545271,0
+WV,11/2/2020,http://services.sos.wv.gov/Elections/AbsenteeBallotStats,153635,136038,0,136038,,714423,0
+DC,11/2/2020,https://www.dcboe.org/ or https://earlyvoting.dcboe.org/,504043,191157,0,260071,,312575,0
+LA,11/1/2020,https://www.sos.la.gov/ElectionsAndVoting/Pages/EarlyVotingStatisticsStatewide.aspx,159443,159443,0,977408,,2049531,0
+FL,11/3/2020,https://countyballotfiles.floridados.gov/VoteByMailEarlyVotingReports/PublicStats,6011508,4737540,0,9069761,,9580489,0
+GA,11/2/2020,https://elections.sos.ga.gov/Elections/voterabsenteefile.do,1782653,1223123,1565,3912819,,4165405,0
+SC,11/3/2020,https://www.scvotes.gov/fact-sheets,1347886,1309598,0,1309598,,2123584,0
+MN,11/2/2020,https://www.sos.state.mn.us/election-administration-campaigns/data-maps/absentee-data/,2055519,1716575,0,1716575,,2968281,0
+MT,11/2/2020,https://sosmt.gov/elections/,656931,529168,0,529168,,516901,0
+ND,11/2/2020,https://vip.sos.nd.gov/abev.aspx?eid=313,213633,174194,0,251484,,349945,0
+AZ,11/2/2020,https://www.dataorbital.com/2020-general-election-early-vote-tracker,3448181,2471577,0,2471577,,2661497,0
+UT,11/2/2020,https://voteinfo.utah.gov/ballots-processed/,1640707,1009654,0,1009654,,1152369,0
+HI,10/30/2020,https://www.facebook.com/elections808/,795248,484000,0,484000,,437664,0
+AK,11/2/2020,https://www.elections.alaska.gov/doc/info/statstable.php,194515,152585,0,152585,,321271,180023
