@@ -144,7 +144,7 @@ const StateBar = ({state, title, electProject, population}) => {
   let TOTAL_2016 = LATEST_ELECTPROJECT.total_ballots_2016
   chartData.labels = [moment(LATEST_ELECTPROJECT.report_date, 'M/D/YYYY').format('LL')]
 
-  let PCT_2016 = TOTAL_2016 / TOTAL_2020
+  let PCT_2016 = TOTAL_2020 / TOTAL_2016
   let PCT_VEP = TOTAL_2020 / TOTAL_VEP
 
   return (<>
