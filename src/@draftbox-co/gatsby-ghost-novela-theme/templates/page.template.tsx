@@ -209,6 +209,9 @@ const ArticleBody = styled.article`
 
   & p em {
     background-color: #fdffb6;
+  }
+  & ul li em {
+    background-color: #fdffb6;
   } 
 
   ${mediaqueries.desktop`
