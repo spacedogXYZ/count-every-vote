@@ -1,4 +1,5 @@
 import React from "react";
+import moment from 'moment';
 import styled from "@emotion/styled";
 
 import { Line } from 'react-chartjs-2';
@@ -38,7 +39,7 @@ const StateChart = ({state, title, electProject}) => {
       if (LABELS[key]) {
         let label = LABELS[key].s;
         let d = {
-          x: row['report_date'],
+          x: moment(row['report_date'], 'M/D/YYYY').format('LL'),
           y: row[key]
         }
         let s = chartData.datasets.find((s) => (s.label === label))

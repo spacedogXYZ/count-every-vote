@@ -1,4 +1,5 @@
 import React from "react";
+import moment from 'moment';
 import styled from "@emotion/styled";
 
 import { HorizontalBar } from 'react-chartjs-2';
@@ -78,9 +79,18 @@ const StateBar = ({state, title, electProject, population}) => {
     scales: {
       yAxes: [
         {
+          /*type: 'time',
+          time: {
+              unit: 'day'
+          },*/
+          // if we do this, the display looks off
           stacked: true,
           ticks: {
             beginAtZero: true,
+            callback: function(value, index, values) {
+              // just show short date here, to match State.Chart xAxes
+              return [moment(value, 'LL').format('MMM D')] ;
+            }
           },
         },
       ],
@@ -119,10 +129,10 @@ const StateBar = ({state, title, electProject, population}) => {
   let VEP_VALUE = VEP_STRING.replace(/,/g, '')
   let TOTAL_VEP = parseInt(VEP_VALUE, 10)
 
-  let LATEST_ELECTPROJECT = electProject.pop()
+  let LATEST_ELECTPROJECT = electProject[electProject.length-1]
   let TOTAL_2020 = LATEST_ELECTPROJECT.total_early_2020 + LATEST_ELECTPROJECT.in_person_2020
   let TOTAL_2016 = LATEST_ELECTPROJECT.total_ballots_2016
-  chartData.labels =[LATEST_ELECTPROJECT.report_date]
+  chartData.labels = [moment(LATEST_ELECTPROJECT.report_date, 'M/D/YYYY').format('LL')]
 
   let PCT_2016 = TOTAL_2016 / TOTAL_2020
   let PCT_VEP = TOTAL_2020 / TOTAL_VEP
