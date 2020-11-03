@@ -1,13 +1,13 @@
 import React from "react";
+import moment from 'moment';
 import styled from "@emotion/styled";
-import { graphql, useStaticQuery } from "gatsby";
 
 import { Line } from 'react-chartjs-2';
 import { white, red, yellow, orange, purple, blue } from "../../colors";
 
 const LABELS = {
   total_early_2020: {s: 'Total Early Votes', c: red},
-  in_person_2020: {s: 'In Person Votes', c: yellow},
+  in_person_2020: {s: 'In Person Early Votes', c: yellow},
   mail_accept_2020: {s: 'Mail Ballots Accepted', c: purple},
   mail_reject_2020: {s: 'Mail Ballots Rejected', c: orange},
   mail_sent_req_2020: {s: 'Mail Ballots Requested', c: blue},
@@ -39,7 +39,7 @@ const StateChart = ({state, title, electProject}) => {
       if (LABELS[key]) {
         let label = LABELS[key].s;
         let d = {
-          x: row['report_date'],
+          x: moment(row['report_date'], 'M/D/YYYY').format('LL'),
           y: row[key]
         }
         let s = chartData.datasets.find((s) => (s.label === label))
@@ -100,9 +100,10 @@ const StateChart = ({state, title, electProject}) => {
     <div
        style={{
         width: '100%',
-        display: 'inline-block',
+        display: 'block',
+        position: 'relative',
         minHeight: 300,
-        marginTop: 20
+        marginTop: 50
        }}
      >
         <h2>{title}</h2>

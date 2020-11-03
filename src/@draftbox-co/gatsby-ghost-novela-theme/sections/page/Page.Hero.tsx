@@ -6,38 +6,42 @@ import Image, { ImagePlaceholder } from "@components/Image";
 
 import mediaqueries from "@styles/media";
 import { IArticle, IAuthor } from "@types";
-
-import ArticleAuthors from "./Article.Authors";
 import { graphql, useStaticQuery } from "gatsby";
 
 interface ArticleHeroProps {
   article: IArticle;
-  authors: IAuthor[];
 }
 
-const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
-  const hasCoAUthors = article.authors && article.authors.length > 1;
+const siteSettingsQuery = graphql`
+  {
+    site {
+      siteMetadata {
+        logoUrl
+      }
+    }
+  }
+`;
+
+const siteSettings = useStaticQuery(siteSettingsQuery);
+const logoUrl = siteSettings.site.siteMetadata.logoUrl;
+
+const PageHero: React.FC<ArticleHeroProps> = ({ article }) => {
   const hasHeroImage =
     article.hero &&
     Object.keys(article.hero.full).length !== 0 &&
     article.hero.full.constructor === Object;
-  const heroImageClass = !hasHeroImage ? "no-hero" : "";
 
   return (
     <Hero>
-      <Header className={heroImageClass}>
+      <Header className={!logoUrl ? `no-logo` : ``}>
         <HeroHeading>{article.title}</HeroHeading>
-        <HeroSubtitle hasCoAUthors={hasCoAUthors}>
-          <ArticleAuthors authors={authors} />
-          <ArticleMeta hasCoAUthors={hasCoAUthors}>
+        <HeroSubtitle hasCoAUthors={false}>
+          <ArticleMeta hasCoAUthors={false}>
             Last Updated: {article.date}
           </ArticleMeta>
         </HeroSubtitle>
       </Header>
-      <HeroImage
-        id="ArticleImage__Hero"
-        className={hasHeroImage ? "" : "no-hero"}
-      >
+      <HeroImage id="ArticleImage__Hero">
         {hasHeroImage ? (
           <Image src={article.hero.full} />
         ) : // <ImagePlaceholder />
@@ -47,33 +51,33 @@ const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
   );
 };
 
-export default ArticleHero;
+export default PageHero;
 
 const Hero = styled.div`
   ${(p) => mediaqueries.phablet`
-    // &::before {
-    //   content: "";
-    //   width: 100%;
-    //   height: 20px;
-    //   background: ${p.theme.colors.primary};
-    //   position: absolute;
-    //   left: 0;
-    //   top: 0;
-    //   transition: ${p.theme.colorModeTransition};
-    // }
+    &::before {
+      content: "";
+      width: 100%;
+      height: 20px;
+      background: ${p.theme.colors.primary};
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: ${p.theme.colorModeTransition};
+    }
 
-    // &::after {
-    //   content: "";
-    //   width: 100%;
-    //   height: 10px;
-    //   background: ${p.theme.colors.background};
-    //   position: absolute;
-    //   left: 0;
-    //   top: 10px;
-    //   border-top-left-radius: 25px;
-    //   border-top-right-radius: 25px;
-    //   transition: ${p.theme.colorModeTransition};
-    // }
+    &::after {
+      content: "";
+      width: 100%;
+      height: 10px;
+      background: ${p.theme.colors.background};
+      position: absolute;
+      left: 0;
+      top: 10px;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+      transition: ${p.theme.colorModeTransition};
+    }
   `}
 `;
 
@@ -106,7 +110,7 @@ const Header = styled.header`
 
   ${mediaqueries.phablet`
     margin: 80px auto;
-    padding: 0 20px;
+    padding: 0 40px;
   `}
 
   @media screen and (max-height: 700px) {
@@ -140,7 +144,6 @@ const HeroSubtitle = styled.div<{ hasCoAUthors: boolean }>`
   ${(p) => mediaqueries.phablet`
     font-size: 14px;
     flex-direction: column;
-    padding-left: ${(p) => p.hasCoAUthors ? "20px" : "0"};
 
     ${p.hasCoAUthors &&
       `
@@ -153,6 +156,7 @@ const HeroSubtitle = styled.div<{ hasCoAUthors: boolean }>`
           bottom: -10px;
           border: 1px solid ${p.theme.colors.horizontalRule};
           opacity: 0.5;
+          border-radius: 5px;
         }
     `}
 
@@ -181,14 +185,11 @@ const HeroImage = styled.div`
 
   ${mediaqueries.phablet`
     margin: 0 auto;
-    width: 100vw;
-    height: auto;
-    &.no-hero {
-      display: none;
-    }
+    width: calc(100vw - 40px);
+    height: 220px;
 
     & > div {
-      height: 100%;
+      height: 220px;
     }
 `}
 `;
