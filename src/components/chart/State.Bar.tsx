@@ -6,8 +6,9 @@ import { HorizontalBar } from 'react-chartjs-2';
 import { white, red, yellow, orange, purple, blue } from "../../colors";
 
 const LABELS = {
-  in_person_2020: {s: 'In Person Early Votes', c: yellow},
+  in_person_early_2020: {s: 'In Person Early Votes', c: yellow},
   mail_accept_2020: {s: 'Mail Votes', c: purple},
+  // in_person_2020: {s: 'In Person 2020', c: "green"},
   // total_ballots_2020: {s: 'Total Ballots 2020', c: "green"},
 };
 
@@ -41,6 +42,12 @@ function pctFormat(num) {
   return Number(num).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2}); 
 }
 
+function parseFromString(numString) {
+  let VALUE = numString.replace(/,/g, '')
+  let INT = parseInt(VALUE, 10)
+  return INT || 0
+}
+
 const StateBar = ({state, title, electProject, population}) => {
   var chartData = {
     labels: ['2020']
@@ -60,6 +67,11 @@ const StateBar = ({state, title, electProject, population}) => {
     if (row.state !== state) {
       return;
     }
+
+    // extract in_person_early_2020 from total_early and mail_accept_2020
+    row['in_person_early_2020'] = parseFromString(row['total_early_2020']) - parseFromString(row['mail_accept_2020'])
+    row['total_ballots_2020'] = parseFromString(row['total_early_2020']) + parseFromString(row['in_person_2020'])
+
     Object.keys(row).forEach((key) => {
       if (LABELS[key]) {
         let label = LABELS[key].s;
@@ -125,12 +137,10 @@ const StateBar = ({state, title, electProject, population}) => {
   // calculate turnout percentages
 
   // parse VEP string to int
-  let VEP_STRING = population[0]['Voting_Eligible_Population__VEP_']
-  let VEP_VALUE = VEP_STRING.replace(/,/g, '')
-  let TOTAL_VEP = parseInt(VEP_VALUE, 10)
+  let TOTAL_VEP = parseFromString(population[0]['Voting_Eligible_Population__VEP_'])
 
   let LATEST_ELECTPROJECT = electProject[electProject.length-1]
-  let TOTAL_2020 = LATEST_ELECTPROJECT.total_early_2020 + LATEST_ELECTPROJECT.in_person_2020
+  let TOTAL_2020 = LATEST_ELECTPROJECT.total_ballots_2020
   let TOTAL_2016 = LATEST_ELECTPROJECT.total_ballots_2016
   chartData.labels = [moment(LATEST_ELECTPROJECT.report_date, 'M/D/YYYY').format('LL')]
 

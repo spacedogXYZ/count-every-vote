@@ -7,15 +7,23 @@ import { white, red, yellow, orange, purple, blue } from "../../colors";
 
 const LABELS = {
   total_early_2020: {s: 'Total Early Votes', c: red},
-  in_person_2020: {s: 'In Person Early Votes', c: yellow},
+  in_person_early_2020: {s: 'In Person Early Votes', c: yellow},
   mail_accept_2020: {s: 'Mail Ballots Accepted', c: purple},
   mail_reject_2020: {s: 'Mail Ballots Rejected', c: orange},
   mail_sent_req_2020: {s: 'Mail Ballots Requested', c: blue},
+  // in_person_2020: {s: 'In Person 2020', c: "green"},
+  // total_ballots_2020: {s: 'Total Ballots 2020', c: "black"},
 };
 
 const ChartWrapper = styled.div`
   display: inline-block;
 `
+
+function parseFromString(numString) {
+  let VALUE = numString.replace(/,/g, '')
+  let INT = parseInt(VALUE, 10)
+  return INT || 0
+}
 
 const StateChart = ({state, title, electProject}) => {
   // electProject is organized as a row for each state date
@@ -35,6 +43,11 @@ const StateChart = ({state, title, electProject}) => {
     if (row.state !== state) {
       return;
     }
+
+    // extract in_person_early_2020 from total_early and mail_accept_2020
+    row['in_person_early_2020'] = parseFromString(row['total_early_2020']) - parseFromString(row['mail_accept_2020'])
+    row['total_ballots_2020'] = parseFromString(row['total_early_2020']) + parseFromString(row['in_person_2020'])
+
     Object.keys(row).forEach((key) => {
       if (LABELS[key]) {
         let label = LABELS[key].s;
