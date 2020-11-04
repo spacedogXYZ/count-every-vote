@@ -5,7 +5,7 @@ CA,11/2/2020,https://docs.google.com/forms/d/e/1FAIpQLSfipraqZymaSWDDYjVkidhZ0fp
 OR,11/3/2020,https://sos.oregon.gov/voting/Pages/current-election.aspx,2949687,2155350,0,2155350,,,2056310,2056310
 WI,11/3/2020,https://elections.wi.gov/index.php/elections-voting/statistics,1421908,1275019,0,1924838,,,2976150,0
 ME,11/2/2020,https://www.maine.gov/sos/cec/elec/data/index.html,531145,499939,0,499939,,,771892,0
-MI,11/2/2020,Data provided by Michigan Secretary of State's office,3318609,2841696,1856,2841696,,,4874619,0
+MI,11/3/2020,Data provided by Michigan Secretary of State's office,3318609,2841696,1856,2841696,,,4874619,0
 NV,11/3/2020,https://www.nvsos.gov/sos/elections/voters/election-turnout-statistics,1768994,579553,0,1122970,,,1125429,0
 NM,11/2/2020,Data Provided by New Mexico Department of State,386186,320466,0,788175,,,804043,0
 CO,11/03/2020,Data provided by Colorado Secretary of State's office,4111226,2809484,0,2887605,,,2859216,2859216
@@ -18,7 +18,7 @@ IL,11/2/2020,https://elections.il.gov/VotingAndRegistrationSystems/PreElectionCo
 IN,11/3/2020,Communication from Indiana Secretary of State's Office,581091,506953,0,1834992,,,2807676,0
 VT,11/2/2020,https://sos.vermont.gov/elections/election-info-resources/elections-results-data/,452266,255141,0,255141,,,320467,0
 AR,11/3/2020,Data provided by Arkansas Secretary of State's office,130379,118294,0,912688,,,1137772,0
-TX,10/30/2020,https://earlyvoting.texas-election.com/Elections/getElectionDetails.do,,973143,0,9719101,,,8975000,0
+TX,11/3/2020,https://earlyvoting.texas-election.com/Elections/getElectionDetails.do,,973143,0,9719101,,,8975000,0
 RI,11/2/2020,https://app.powerbigov.us/view?r=eyJrIjoiMGEwN2E0MzUtOTA0OC00ZDA3LThjMTItZDZhYTBjYjU5ZjhjIiwidCI6IjJkMGYxZGI2LWRkNTktNDc3Mi04NjVmLTE5MTQxNzVkMDdjMiJ9,175273,156178,0,305724,,,469589,0
 AL,11/2/2020,https://twitter.com/alasecofstate/status/1323282864251830273,331104,300402,0,300402,,,2134061,0
 MS,11/1/2020,https://mssos.sharefile.com/share/view/s512f4ecd9684d6e8/fo0396ba-d6a9-4e3b-afae-1a669884b304,248335,231031,0,231031,,,1209357,0
@@ -35,13 +35,13 @@ SD,10/30/2020,https://sdsos.gov/elections-voting/upcoming-elections/general-info
 CT,11/2/2020,Data provided by Connecticut Secretary of State's office,715003,636000,0,636000,,,1675955,0
 NH,10/27/2020,https://sos.nh.gov/elections/information/notices/absentee-ballots-requested-for-general-election/,225002,181577,0,181577,,,755850,0
 KY,11/1/2020,https://spectrumnews1.com/ky/lexington/news/2020/11/02/early-in-person-voting-in-kentucky,655452,575000,0,1508000,,,1955195,0
-OH,11/2/2020,Data scraped from county websites,3211203,3000827,0,3000827,,,5607641,0
+OH,11/3/2020,Data scraped from county websites,3211203,3000827,0,3000827,,,5607641,0
 TN,10/29/2020,https://sos.tn.gov/products/elections-executive/nov-3-election-information,210408,210408,0,2280747,,,2545271,0
 WV,11/2/2020,http://services.sos.wv.gov/Elections/AbsenteeBallotStats,153635,136038,0,136038,,,714423,0
 DC,11/2/2020,https://www.dcboe.org/ or https://earlyvoting.dcboe.org/,504043,191157,0,260071,,,312575,0
 LA,11/1/2020,https://www.sos.la.gov/ElectionsAndVoting/Pages/EarlyVotingStatisticsStatewide.aspx,159443,159443,0,977408,,,2049531,0
 FL,11/3/2020,https://countyballotfiles.floridados.gov/VoteByMailEarlyVotingReports/PublicStats,6011508,4737540,0,9069761,,,9580489,0
-GA,11/2/2020,https://elections.sos.ga.gov/Elections/voterabsenteefile.do,1782653,1223123,1565,3912819,,,4165405,0
+GA,11/3/2020,https://elections.sos.ga.gov/Elections/voterabsenteefile.do,1782653,1223123,1565,3912819,,,4165405,0
 SC,11/3/2020,https://www.scvotes.gov/fact-sheets,1347886,1309598,0,1309598,,,2123584,0
 MN,11/2/2020,https://www.sos.state.mn.us/election-administration-campaigns/data-maps/absentee-data/,2055519,1716575,0,1716575,,,2968281,0
 MT,11/2/2020,https://sosmt.gov/elections/,656931,529168,0,529168,,,516901,0

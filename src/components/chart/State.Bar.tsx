@@ -144,7 +144,7 @@ const StateBar = ({state, title, electProject, vep, enip}) => {
   let TOTAL_2016 = LATEST_ELECTPROJECT.total_ballots_2016
   chartData.labels = [moment(LATEST_ELECTPROJECT.report_date, 'M/D/YYYY').format('LL')]
  
-  let TOTAL_2020 = ELECTPROJECT_2020 + parseFromString(LATEST_ENIP.total_votes_p)
+  let TOTAL_2020 = ELECTPROJECT_2020 + parseFromString(LATEST_ENIP.eday_p)
 
   let PCT_2016 = TOTAL_2020 / TOTAL_2016
   let PCT_VEP = TOTAL_2020 / TOTAL_VEP
@@ -156,6 +156,7 @@ const StateBar = ({state, title, electProject, vep, enip}) => {
         <HorizontalBar data={chartData} options={chartOptions} />
       </ChartWrapper>
       <div>
+        <div><BigPct>{TOTAL_2020.toLocaleString()}</BigPct> votes cast</div>
         <div><BigPct>{pctFormat(PCT_2016)}</BigPct> of 2016 Turnout</div>
         <div><BigPct>{pctFormat(PCT_VEP)}</BigPct> of 2020 Voting Population</div>
       </div>
