@@ -5,9 +5,11 @@ import datetime
 from bs4 import BeautifulSoup
 
 ENIP_FILE = "https://voteamerica-enip-data.s3.amazonaws.com/prod/national/latest.json"
+DFP_FILE = "https://dfp-election-integrity-blobs.s3.us-east-2.amazonaws.com/v0/US.json"
+
 REQUEST_HEADERS = {'User-Agent' : "bot"}
 ALL_STATES = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY",]
-DESIRED_FIELDS = ['state', 'report_date', 'total_votes_p', 'total_votes_s']
+DESIRED_FIELDS = ['state', 'report_date', 'total_votes_p', 'total_votes_s', 'eday_p', 'eday_s']
 
 RACES = ['P', 'S']
 PARTIES = ['dem', 'gop', 'oth']
@@ -18,7 +20,14 @@ def get_json(url):
     data = json.loads(connect.read())
     return data
 
-def extract_data(data, last_updated):
+def extract_early(data):
+    extracted = {}
+    for code in ALL_STATES:
+        early_votes = data['state_summaries'][code].get('advance_turnout', {}).get('totalAdvVotesCast', 0)
+        extracted[code] = int(early_votes)
+    return extracted
+
+def extract_data(data, early, last_updated):
     extracted = []
     report_date = last_updated.split(' ')[0]
 
@@ -28,6 +37,7 @@ def extract_data(data, last_updated):
             'state': code,
             'report_date': report_date
         }
+        before_eday = early[code]
 
         for r in RACES:
             if state.get(r):
@@ -56,8 +66,11 @@ with open(filename, 'w') as out_file:
     out_writer.writeheader()
 
     enip = get_json(ENIP_FILE)
+    dfp = get_json(DFP_FILE)
+    early = extract_early(dfp)
+
     latest = get_json(enip['cdnUrl'])
-    data = extract_data(latest, enip['lastUpdated'])
+    data = extract_data(latest, early, enip['lastUpdated'])
     write_data(data, out_writer)
 
     print("done")
