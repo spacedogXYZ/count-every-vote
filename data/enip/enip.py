@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 ENIP_FILE = "https://voteamerica-enip-data.s3.amazonaws.com/prod/national/latest.json"
 REQUEST_HEADERS = {'User-Agent' : "bot"}
 ALL_STATES = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY",]
-DESIRED_FIELDS = ['state', 'total_votes_p', 'total_votes_s']
+DESIRED_FIELDS = ['state', 'report_date', 'total_votes_p', 'total_votes_s']
 
 RACES = ['P', 'S']
 PARTIES = ['dem', 'gop', 'oth']
@@ -18,12 +18,16 @@ def get_json(url):
     data = json.loads(connect.read())
     return data
 
-def extract_data(data):
+def extract_data(data, last_updated):
     extracted = []
+    report_date = last_updated.split(' ')[0]
 
     for code in ALL_STATES:
         state = data['stateSummaries'][code]
-        row = { 'state': code }
+        row = {
+            'state': code,
+            'report_date': report_date
+        }
 
         for r in RACES:
             if state.get(r):
@@ -53,7 +57,7 @@ with open(filename, 'w') as out_file:
 
     enip = get_json(ENIP_FILE)
     latest = get_json(enip['cdnUrl'])
-    data = extract_data(latest)
+    data = extract_data(latest, enip['lastUpdated'])
     write_data(data, out_writer)
 
     print("done")

@@ -66,8 +66,12 @@ const StateBar = ({state, title, electProject, vep, enip}) => {
     // extract in_person_early_2020 from total_early and mail_accept_2020
     row['in_person_early_2020'] = parseFromString(row['total_early_2020']) - parseFromString(row['mail_accept_2020'])
     row['total_ballots_2020'] = parseFromString(row['total_early_2020']) + parseFromString(row['in_person_2020'])
-    // get in_person_2020 from enip 
-    row['in_person_2020'] = parseFromString(LATEST_ENIP.total_votes_p || '0')
+    // get in_person_2020 from enip
+    if (row['report_date'] === "11/3/2020") {
+      row['in_person_2020'] = parseFromString(LATEST_ENIP.total_votes_p || '0')
+    } else {
+     row['in_person_2020'] = 0 
+    }
 
     Object.keys(row).forEach((key) => {
       if (LABELS[key]) {

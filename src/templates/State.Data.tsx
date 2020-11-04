@@ -57,12 +57,14 @@ const DataPage = ({data, pageContext}) => {
           electProject={data.allElectprojectCsv.nodes}
         />
         <p>Data processed by Michael McDonald,
-        <a href="https://electproject.github.io/Early-Vote-2020G/index.html">United States Elections Project, CC-SA 2020</a>.{' '}
+        <a href="https://electproject.github.io/Early-Vote-2020G/index.html">United States Elections Project, CC-SA 2020</a><br />
+        {' and '}<a href="https://2020.dataforprogress.org">Election Night Integrity Project, &copy; Data for Progress 2020</a><br />
         { dataSource.startsWith("http")
-          ? ( <a href={dataSource}>Official Source</a> ) 
+          ? ( <a href={dataSource}>Official Sources</a> ) 
           : ( <span>{dataSource}</span> )
-        }.
+        }
         </p>
+
       </Section>
     </Layout>
   );
@@ -91,6 +93,7 @@ export const query = graphql`
           total_votes_p
           total_votes_s
           state
+          report_date
         }
       }
 
