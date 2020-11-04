@@ -42,7 +42,6 @@ const BigPct = styled.span`
 const StateBar = ({state, title, electProject, vep, enip}) => {
   let LATEST_ELECTPROJECT = electProject[electProject.length-1]
   let LATEST_ENIP = enip[enip.length-1]
-  console.log(LATEST_ENIP)
 
   var chartData = {
     labels: ['2020']
