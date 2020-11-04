@@ -4,11 +4,12 @@ import styled from "@emotion/styled";
 
 import { HorizontalBar } from 'react-chartjs-2';
 import { white, red, yellow, orange, purple, blue } from "../../colors";
+import { parseFromString, pctFormat }  from "../../utils";
 
 const LABELS = {
   in_person_early_2020: {s: 'In Person Early Votes', c: yellow},
   mail_accept_2020: {s: 'Mail Votes', c: purple},
-  // in_person_2020: {s: 'In Person 2020', c: "green"},
+  in_person_2020: {s: 'In Person Votes', c: "green"},
   // total_ballots_2020: {s: 'Total Ballots 2020', c: "green"},
 };
 
@@ -38,17 +39,11 @@ const BigPct = styled.span`
   font-weight: bold;
 `
 
-function pctFormat(num) {
-  return Number(num).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2}); 
-}
+const StateBar = ({state, title, electProject, vep, enip}) => {
+  let LATEST_ELECTPROJECT = electProject[electProject.length-1]
+  let LATEST_ENIP = enip[enip.length-1]
+  console.log(LATEST_ENIP)
 
-function parseFromString(numString) {
-  let VALUE = numString.replace(/,/g, '')
-  let INT = parseInt(VALUE, 10)
-  return INT || 0
-}
-
-const StateBar = ({state, title, electProject, population}) => {
   var chartData = {
     labels: ['2020']
   };
@@ -71,6 +66,12 @@ const StateBar = ({state, title, electProject, population}) => {
     // extract in_person_early_2020 from total_early and mail_accept_2020
     row['in_person_early_2020'] = parseFromString(row['total_early_2020']) - parseFromString(row['mail_accept_2020'])
     row['total_ballots_2020'] = parseFromString(row['total_early_2020']) + parseFromString(row['in_person_2020'])
+    // get in_person_2020 from enip
+    if (row['report_date'] === "11/3/2020") {
+      row['in_person_2020'] = parseFromString(LATEST_ENIP.eday_p || '0')
+    } else {
+     row['in_person_2020'] = 0 
+    }
 
     Object.keys(row).forEach((key) => {
       if (LABELS[key]) {
@@ -137,12 +138,13 @@ const StateBar = ({state, title, electProject, population}) => {
   // calculate turnout percentages
 
   // parse VEP string to int
-  let TOTAL_VEP = parseFromString(population[0]['Voting_Eligible_Population__VEP_'])
+  let TOTAL_VEP = parseFromString(vep[0]['Voting_Eligible_Population__VEP_'])
 
-  let LATEST_ELECTPROJECT = electProject[electProject.length-1]
-  let TOTAL_2020 = LATEST_ELECTPROJECT.total_ballots_2020
+  let ELECTPROJECT_2020 = LATEST_ELECTPROJECT.total_ballots_2020
   let TOTAL_2016 = LATEST_ELECTPROJECT.total_ballots_2016
   chartData.labels = [moment(LATEST_ELECTPROJECT.report_date, 'M/D/YYYY').format('LL')]
+ 
+  let TOTAL_2020 = ELECTPROJECT_2020 + parseFromString(LATEST_ENIP.eday_p)
 
   let PCT_2016 = TOTAL_2020 / TOTAL_2016
   let PCT_VEP = TOTAL_2020 / TOTAL_VEP
@@ -154,6 +156,7 @@ const StateBar = ({state, title, electProject, population}) => {
         <HorizontalBar data={chartData} options={chartOptions} />
       </ChartWrapper>
       <div>
+        <div><BigPct>{TOTAL_2020.toLocaleString()}</BigPct> votes cast</div>
         <div><BigPct>{pctFormat(PCT_2016)}</BigPct> of 2016 Turnout</div>
         <div><BigPct>{pctFormat(PCT_VEP)}</BigPct> of 2020 Voting Population</div>
       </div>

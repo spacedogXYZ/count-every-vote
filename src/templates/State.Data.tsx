@@ -31,11 +31,13 @@ const HeaderSection = styled(Section)`
 `
 
 const DataPage = ({data, pageContext}) => {
-  let MOST_RECENT = data.allElectprojectCsv.nodes[data.allElectprojectCsv.nodes.length-1];
-  let lastUpdate = moment(MOST_RECENT.report_date, 'M/D/YYYY').format('MMMM Do, YYYY');
+  let LATEST_ELECTPROJECT = data.allElectprojectCsv.nodes[data.allElectprojectCsv.nodes.length-1];
+  let lastUpdate = moment(LATEST_ELECTPROJECT.report_date, 'M/D/YYYY').format('MMMM Do, YYYY');
   // these dates come to us from ElectionProject, so we don't want to mess with their format until display
-  let dataSource = MOST_RECENT.source;
+  let dataSource = LATEST_ELECTPROJECT.source;
   let pageLink = data.ghostPage && data.ghostPage.slug;
+
+  let LATEST_ENIP = data.allEnipCsv.nodes[data.allEnipCsv.nodes.length-1];
 
   return (
     <Layout>
@@ -48,18 +50,21 @@ const DataPage = ({data, pageContext}) => {
       <Section id="Data__Section">
         <StateBar state={pageContext.state} title={`${pageContext.title} Ballots Cast`}
           electProject={data.allElectprojectCsv.nodes}
-          population={data.allVepCsv.nodes}
+          enip={data.allEnipCsv.nodes}
+          vep={data.allVepCsv.nodes}
         />
         <StateChart state={pageContext.state} title={`${pageContext.title} Vote Counts`}
           electProject={data.allElectprojectCsv.nodes}
         />
         <p>Data processed by Michael McDonald,
-        <a href="https://electproject.github.io/Early-Vote-2020G/index.html">United States Elections Project, CC-SA 2020</a>.{' '}
+        <a href="https://electproject.github.io/Early-Vote-2020G/index.html">United States Elections Project, CC-SA 2020</a><br />
+        {' and '}<a href="https://2020.dataforprogress.org">Election Night Integrity Project, &copy; Data for Progress 2020</a><br />
         { dataSource.startsWith("http")
-          ? ( <a href={dataSource}>Official Source</a> ) 
+          ? ( <a href={dataSource}>Official Sources</a> ) 
           : ( <span>{dataSource}</span> )
-        }.
+        }
         </p>
+
       </Section>
     </Layout>
   );
@@ -80,6 +85,17 @@ export const query = graphql`
           mail_reject_2020
           mail_sent_req_2020
           total_ballots_2016
+        }
+      }
+
+      allEnipCsv(filter: {state: {eq: $state}}) {
+        nodes {
+          total_votes_p
+          total_votes_s
+          eday_p
+          eday_s
+          state
+          report_date
         }
       }
 
