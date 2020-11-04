@@ -92,6 +92,8 @@ export const query = graphql`
         nodes {
           total_votes_p
           total_votes_s
+          eday_p
+          eday_s
           state
           report_date
         }

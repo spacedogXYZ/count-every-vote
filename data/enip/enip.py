@@ -50,6 +50,8 @@ def extract_data(data, early, last_updated):
                     if p_count:
                         total += p_count.get('popVote', 0)
                 row[f'total_votes_{r.lower()}'] = total
+                row[f'eday_{r.lower()}'] = total - before_eday
+                row[f'eday_{r.lower()}'] = total - before_eday
 
         extracted.append(row)
     return extracted
