@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 
 import { Line } from 'react-chartjs-2';
 import { white, red, yellow, orange, purple, blue } from "../../colors";
+import { parseFromString }  from "../../utils";
 
 const LABELS = {
   in_person_early_2020: {s: 'In Person Early Votes', c: yellow},
@@ -18,12 +19,6 @@ const LABELS = {
 const ChartWrapper = styled.div`
   display: inline-block;
 `
-
-function parseFromString(numString) {
-  let VALUE = numString.replace(/,/g, '')
-  let INT = parseInt(VALUE, 10)
-  return INT || 0
-}
 
 const StateChart = ({state, title, electProject}) => {
   // electProject is organized as a row for each state date
