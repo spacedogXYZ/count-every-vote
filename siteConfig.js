@@ -104,7 +104,7 @@ module.exports ={
   "language": "en-US",
   "logoUrl": "count_every_vote_black_center.png",
   "iconUrl": "",
-  "coverUrl": "cover.png",
+  "coverUrl": "cover-update.png",
   "alternateLogoUrl": "",
   "themeConfig": {
     "useLocalStorage": false,
