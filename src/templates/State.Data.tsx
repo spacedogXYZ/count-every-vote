@@ -32,12 +32,12 @@ const HeaderSection = styled(Section)`
 
 const DataPage = ({data, pageContext}) => {
   let LATEST_ELECTPROJECT = data.allElectprojectCsv.nodes[data.allElectprojectCsv.nodes.length-1];
-  let lastUpdate = moment(LATEST_ELECTPROJECT.report_date, 'M/D/YYYY').format('MMMM Do, YYYY');
+  let LATEST_ENIP = data.allEnipCsv.nodes[data.allEnipCsv.nodes.length-1];
+
+  let lastUpdate = moment(LATEST_ENIP.report_date, 'YYYY-MM-DD').format('MMMM Do, YYYY');
   // these dates come to us from ElectionProject, so we don't want to mess with their format until display
   let dataSource = LATEST_ELECTPROJECT.source;
   let pageLink = data.ghostPage && data.ghostPage.slug;
-
-  let LATEST_ENIP = data.allEnipCsv.nodes[data.allEnipCsv.nodes.length-1];
 
   return (
     <Layout>

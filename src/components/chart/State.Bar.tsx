@@ -155,7 +155,7 @@ const StateBar = ({state, title, electProject, vep, enip}) => {
         <HorizontalBar data={chartData} options={chartOptions} />
       </ChartWrapper>
       <div>
-        <div><BigPct>{TOTAL_2020.toLocaleString()}</BigPct> votes cast</div>
+        <div><BigPct>{TOTAL_2020.toLocaleString()}</BigPct> votes counted</div>
         <div><BigPct>{pctFormat(PCT_2016)}</BigPct> of 2016 Turnout</div>
         <div><BigPct>{pctFormat(PCT_VEP)}</BigPct> of 2020 Voting Population</div>
       </div>
