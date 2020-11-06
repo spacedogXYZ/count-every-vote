@@ -12,7 +12,7 @@ const LABELS = {
   mail_reject_2020: {s: 'Mail Ballots Rejected', c: orange},
   mail_sent_req_2020: {s: 'Mail Ballots Requested', c: blue},
   total_early_2020: {s: 'Total Early Votes', c: red},
-  in_person_2020: {s: 'In Person 2020', c: "green"},
+  in_person_2020: {s: 'In Person Election Day', c: "green"},
   // total_ballots_2020: {s: 'Total Ballots 2020', c: "black"},
 };
 

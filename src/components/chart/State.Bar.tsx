@@ -9,7 +9,7 @@ import { parseFromString, pctFormat }  from "../../utils";
 const LABELS = {
   in_person_early_2020: {s: 'In Person Early Votes', c: yellow},
   mail_accept_2020: {s: 'Mail Votes', c: purple},
-  in_person_2020: {s: 'In Person Votes', c: "green"},
+  in_person_2020: {s: 'In Person Election Day', c: "green"},
   // total_ballots_2020: {s: 'Total Ballots 2020', c: "green"},
 };
 
